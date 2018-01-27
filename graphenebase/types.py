@@ -201,7 +201,7 @@ class Array():
         for a in self.data:
             try:
                 r.append(JsonObj(a))
-            except:
+            except Exception:
                 r.append(str(a))
         return json.dumps(r)
 
@@ -211,7 +211,7 @@ class PointInTime():
         self.data = d
 
     def __bytes__(self):
-        return struct.pack("<I", timegm(time.strptime((self.data + "UTC"), timeformat)))
+        return struct.pack("<i", timegm(time.strptime((self.data + "UTC"), timeformat)))
 
     def __str__(self):
         return self.data
